@@ -1,0 +1,32 @@
+<html ng-app="interactionApp">
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="app.js"></script>
+
+</head>
+<body ng-controller="TimelineController">
+  <div class="timeline-wrapper" ng-repeat="item in items | orderBy:id">
+    <div class="time">
+      <p>{{ formatTime(item.time) }}</p>
+    </div>
+    <div class="icon" style="background-color: {{item.backgroundColor}};">
+      <img ng-if="item.icon" ng-src="artwork/svgs/{{item.icon}}.svg"></img>
+      <div ng-if="!item.icon" class="icon-circle"></div>
+    </div>
+    <div class="content" style="background-color: {{item.backgroundColor}};">
+      <div class="content-title"><p>{{item.title}}</p></div>
+      <div class="content-subtitle" style="color: {{item.color}}"><p>{{item.subtitle}}</p></div>
+      <div class="content-notes"><p>{{item.notes}}</p></div>
+      <div ng-if="item.evaluation" class="content-evaluation">
+        <div class="content-text"><p>{{item.evaluation.text}}</p></div>
+        <div ng-if="item.evaluation.score && item.evaluation.maxScore" class="content-score"><p>{{item.evaluation.score}}/{{item.evaluation.maxScore}}</p></div>
+        <div ng-if="item.evaluation.checkbox" class="content-checkbox"></div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

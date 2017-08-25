@@ -3,9 +3,12 @@
     "version": "1.0.0",
     "main": "server.js",
     "scripts": {
-        "start": "node server"
+        "start-old": "node server",
+        "start": "http-server ./ -a localhost -p 8077 -c-1"
     },
-        "dependencies": {
-        "express": "4.15.4"
+    "dependencies": {
+        "angular": "^1.6.6",
+        "express": "4.15.4",
+        "http-server": "^0.9.0"
     }
 }
